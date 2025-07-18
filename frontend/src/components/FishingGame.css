@@ -1,0 +1,45 @@
+.fishing-game {
+  min-height: 100vh;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.fishing-game.dark {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  color: #e0e0e0;
+}
+
+.fishing-game.light {
+  background: linear-gradient(135deg, #87ceeb 0%, #b0e0e6 50%, #add8e6 100%);
+  color: #333;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.fishing-game.dark .game-header {
+  background: rgba(15, 15, 35, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.fishing-game.light .game-header {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+  .game-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .fishing-game {
+    padding: 10px;
+  }
+}

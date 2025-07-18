@@ -1,0 +1,203 @@
+.word-challenge {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 20px 20px 0 0;
+  z-index: 100;
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.challenge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ecdc4, #44a08d);
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+.time-display {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.time {
+  color: #4ecdc4;
+  transition: color 0.3s ease;
+}
+
+.time.urgent {
+  color: #ff6b6b;
+  animation: urgentPulse 1s infinite;
+}
+
+@keyframes urgentPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.word-display {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.word-counter {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.target-word {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: 'Monaco', 'Menlo', monospace;
+  letter-spacing: 0.1em;
+  margin: 20px 0;
+}
+
+.letter {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.letter.correct {
+  background: #27ae60;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 2px 10px rgba(39, 174, 96, 0.5);
+}
+
+.letter.incorrect {
+  background: #e74c3c;
+  color: white;
+  animation: shake 0.5s ease-in-out;
+}
+
+.letter.current {
+  background: #3498db;
+  color: white;
+  animation: blink 1s infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.input-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.word-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px 20px;
+  font-size: 1.5rem;
+  border: 2px solid #444;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.word-input:focus {
+  outline: none;
+  border-color: #4ecdc4;
+  box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+}
+
+.word-input.success {
+  border-color: #27ae60;
+  background: rgba(39, 174, 96, 0.1);
+}
+
+.word-input.error {
+  border-color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+  animation: shake 0.5s ease-in-out;
+}
+
+.input-feedback {
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #4ecdc4;
+}
+
+.remaining-words {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  opacity: 0.6;
+}
+
+.upcoming-word {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 14px;
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .word-challenge {
+    padding: 20px;
+  }
+  
+  .target-word {
+    font-size: 2rem;
+  }
+  
+  .word-input {
+    font-size: 1.2rem;
+    padding: 12px 16px;
+  }
+  
+  .challenge-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .progress-bar {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

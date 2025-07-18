@@ -102,6 +102,58 @@ export const fishData = {
       "Only appears to master anglers",
       "Its golden scales are said to bring eternal luck"
     ]
+  },
+  catfish: {
+    name: "Channel Catfish",
+    color: "#8B4513",
+    difficulty: 2,
+    rarity: 80,
+    habitat: "Rivers, lakes, and reservoirs with muddy bottoms",
+    description: "Bottom-dwelling fish with sensitive barbels used for finding food. Known for their strong fighting ability.",
+    funFacts: [
+      "Can taste with their entire body surface",
+      "Their barbels are extremely sensitive to chemicals",
+      "Can live for over 20 years"
+    ]
+  },
+  perch: {
+    name: "Yellow Perch",
+    color: "#DAA520",
+    difficulty: 2,
+    rarity: 90,
+    habitat: "Cool lakes and ponds with abundant vegetation",
+    description: "Schooling fish with distinctive yellow coloration and dark vertical bars. Popular among ice fishermen.",
+    funFacts: [
+      "Travel in schools of 50-200 fish",
+      "Can see in color and have excellent vision",
+      "Their scales are used to make artificial pearls"
+    ]
+  },
+  carp: {
+    name: "Common Carp",
+    color: "#CD853F",
+    difficulty: 3,
+    rarity: 60,
+    habitat: "Slow-moving waters with soft bottoms",
+    description: "Hardy fish that can survive in various conditions. Known for their intelligence and wariness.",
+    funFacts: [
+      "Can live for over 100 years",
+      "Have excellent memory and can be trained",
+      "Can survive in water with very low oxygen"
+    ]
+  },
+  swordfish: {
+    name: "Swordfish",
+    color: "#4682B4",
+    difficulty: 6,
+    rarity: 15,
+    habitat: "Warm ocean waters worldwide",
+    description: "Fast-swimming predator with a distinctive sword-like bill. Can reach incredible speeds and depths.",
+    funFacts: [
+      "Can swim up to 60 mph",
+      "Can heat their brain and eyes for better vision",
+      "Dive to depths of over 2,000 feet"
+    ]
   }
 };
 
@@ -129,5 +181,76 @@ export const fishingWords = [
   
   // Weather and conditions
   "sunrise", "sunset", "dawn", "dusk", "calm", "windy", "cloudy", "sunny",
-  "rain", "storm", "tide", "current", "temperature", "pressure", "moon", "season"
+  "rain", "storm", "tide", "current", "temperature", "pressure", "moon", "season",
+  
+  // Advanced terms
+  "backcast", "downstream", "upstream", "eddy", "riffle", "pool", "run", "strike",
+  "school", "spawn", "migration", "habitat", "ecosystem", "predator", "prey"
 ];
+
+export const levelConfig = {
+  1: {
+    fishRequired: 3,
+    timeLimit: 20,
+    wordMultiplier: 1.0,
+    scoreMultiplier: 100,
+    description: "Beginner waters - Learn the basics of fishing",
+    availableFish: ["bass", "perch", "goldfish", "catfish"]
+  },
+  2: {
+    fishRequired: 5,
+    timeLimit: 18,
+    wordMultiplier: 1.2,
+    scoreMultiplier: 120,
+    description: "Shallow waters - More challenging catches",
+    availableFish: ["bass", "trout", "perch", "catfish", "carp"]
+  },
+  3: {
+    fishRequired: 7,
+    timeLimit: 16,
+    wordMultiplier: 1.4,
+    scoreMultiplier: 140,
+    description: "Deep waters - Bigger fish await",
+    availableFish: ["trout", "salmon", "pike", "carp", "bass"]
+  },
+  4: {
+    fishRequired: 8,
+    timeLimit: 14,
+    wordMultiplier: 1.6,
+    scoreMultiplier: 160,
+    description: "Rapids - Fast-paced fishing action",
+    availableFish: ["salmon", "pike", "trout", "carp", "catfish"]
+  },
+  5: {
+    fishRequired: 10,
+    timeLimit: 12,
+    wordMultiplier: 1.8,
+    scoreMultiplier: 180,
+    description: "Open ocean - Venture into deeper waters",
+    availableFish: ["marlin", "tuna", "salmon", "pike", "swordfish"]
+  },
+  6: {
+    fishRequired: 12,
+    timeLimit: 10,
+    wordMultiplier: 2.0,
+    scoreMultiplier: 200,
+    description: "Shark waters - Only for expert anglers",
+    availableFish: ["shark", "marlin", "tuna", "swordfish", "salmon"]
+  },
+  7: {
+    fishRequired: 15,
+    timeLimit: 8,
+    wordMultiplier: 2.2,
+    scoreMultiplier: 220,
+    description: "Legendary waters - The ultimate challenge",
+    availableFish: ["shark", "swordfish", "marlin", "tuna", "goldfish"]
+  },
+  8: {
+    fishRequired: 20,
+    timeLimit: 6,
+    wordMultiplier: 2.5,
+    scoreMultiplier: 250,
+    description: "Master angler - Prove your fishing mastery",
+    availableFish: ["goldfish", "shark", "swordfish", "marlin", "tuna"]
+  }
+};

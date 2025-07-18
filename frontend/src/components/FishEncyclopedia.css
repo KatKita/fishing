@@ -1,0 +1,430 @@
+.fish-encyclopedia {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px 20px 0 0;
+  margin: 20px;
+  margin-bottom: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.encyclopedia-header {
+  text-align: center;
+  padding: 30px 25px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.encyclopedia-header h3 {
+  color: #4ecdc4;
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.encyclopedia-header p {
+  color: #888;
+  margin: 0;
+  font-size: 16px;
+}
+
+.sand-background {
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    rgba(194, 178, 128, 0.1) 0%,
+    rgba(160, 144, 96, 0.3) 50%,
+    rgba(139, 123, 75, 0.5) 100%
+  );
+  padding: 30px 25px 50px;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.sand-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(194, 178, 128, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 60%, rgba(160, 144, 96, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(139, 123, 75, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.fish-collection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.fish-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.fish-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.fish-card:hover::before {
+  left: 100%;
+}
+
+.fish-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(78, 205, 196, 0.5);
+  background: rgba(78, 205, 196, 0.1);
+}
+
+.fish-card.selected {
+  border-color: rgba(78, 205, 196, 0.8);
+  background: rgba(78, 205, 196, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.fish-visual-encyclopedia {
+  width: 100px;
+  height: 60px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.fish-card:hover .fish-visual-encyclopedia {
+  transform: scale(1.1);
+}
+
+.fish-body-encyclopedia {
+  width: 70px;
+  height: 45px;
+  border-radius: 50%;
+  position: relative;
+  background: inherit;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  animation: fishFloat 3s ease-in-out infinite;
+}
+
+@keyframes fishFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(1deg); }
+}
+
+.fish-eye-encyclopedia {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.fish-eye-encyclopedia::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 3px;
+  height: 3px;
+  background: black;
+  border-radius: 50%;
+}
+
+.fish-tail-encyclopedia {
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 15px solid rgba(255, 255, 255, 0.3);
+}
+
+.fish-swim-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  animation: swimEffect 2s ease-in-out infinite;
+}
+
+@keyframes swimEffect {
+  0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.fish-card-info {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.fish-card-name {
+  color: #4ecdc4;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.fish-card-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+.fish-stat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #888;
+}
+
+.stat-icon {
+  font-size: 16px;
+}
+
+.fish-details-expanded {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+  margin-top: 15px;
+  animation: expandDetails 0.3s ease-out;
+}
+
+@keyframes expandDetails {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fish-details-expanded strong {
+  color: #4ecdc4;
+  font-size: 14px;
+}
+
+.fish-habitat,
+.fish-description {
+  margin-bottom: 15px;
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.fish-facts {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.fish-facts ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.fish-facts li {
+  margin-bottom: 5px;
+  padding-left: 15px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.fish-facts li:before {
+  content: '•';
+  color: #4ecdc4;
+  position: absolute;
+  left: 0;
+  font-size: 16px;
+}
+
+.sand-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sand-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(194, 178, 128, 0.6);
+  border-radius: 50%;
+  animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Light theme adaptations */
+.fishing-game.light .fish-encyclopedia {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.fishing-game.light .encyclopedia-header {
+  background: rgba(255, 255, 255, 0.6);
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.fishing-game.light .encyclopedia-header h3 {
+  color: #2980b9;
+}
+
+.fishing-game.light .encyclopedia-header p {
+  color: #666;
+}
+
+.fishing-game.light .fish-card {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.fishing-game.light .fish-card:hover {
+  border-color: rgba(41, 128, 185, 0.5);
+  background: rgba(41, 128, 185, 0.1);
+}
+
+.fishing-game.light .fish-card.selected {
+  border-color: rgba(41, 128, 185, 0.8);
+  background: rgba(41, 128, 185, 0.15);
+}
+
+.fishing-game.light .fish-card-name {
+  color: #2980b9;
+}
+
+.fishing-game.light .fish-stat {
+  color: #666;
+}
+
+.fishing-game.light .fish-details-expanded strong {
+  color: #2980b9;
+}
+
+.fishing-game.light .fish-habitat,
+.fishing-game.light .fish-description,
+.fishing-game.light .fish-facts {
+  color: #555;
+}
+
+.fishing-game.light .fish-facts li:before {
+  color: #2980b9;
+}
+
+@media (max-width: 768px) {
+  .fish-encyclopedia {
+    margin: 15px;
+    margin-bottom: 0;
+  }
+  
+  .encyclopedia-header {
+    padding: 25px 20px 15px;
+  }
+  
+  .encyclopedia-header h3 {
+    font-size: 24px;
+  }
+  
+  .sand-background {
+    padding: 25px 20px 40px;
+  }
+  
+  .fish-collection {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
+  .fish-card {
+    padding: 15px;
+  }
+  
+  .fish-visual-encyclopedia {
+    width: 80px;
+    height: 50px;
+  }
+  
+  .fish-body-encyclopedia {
+    width: 60px;
+    height: 35px;
+  }
+  
+  .fish-card-name {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fish-collection {
+    grid-template-columns: 1fr;
+  }
+  
+  .fish-card {
+    padding: 12px;
+  }
+  
+  .fish-card-stats {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

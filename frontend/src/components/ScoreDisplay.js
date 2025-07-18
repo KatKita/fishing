@@ -1,7 +1,7 @@
 import React from 'react';
 import './ScoreDisplay.css';
 
-const ScoreDisplay = ({ score, level, fishCaught, timeLeft, gameState }) => {
+const ScoreDisplay = ({ score, level, fishCaught, timeLeft, gameState, onFishCounterClick }) => {
   return (
     <div className="score-display">
       <div className="score-item">
@@ -20,7 +20,11 @@ const ScoreDisplay = ({ score, level, fishCaught, timeLeft, gameState }) => {
         </div>
       </div>
       
-      <div className="score-item">
+      <div 
+        className="score-item clickable-fish-counter"
+        onClick={onFishCounterClick}
+        title="Click to see caught fish history"
+      >
         <div className="score-icon">🐟</div>
         <div className="score-value">
           <span className="score-number">{fishCaught}</span>

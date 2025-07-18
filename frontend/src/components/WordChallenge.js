@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './WordChallenge.css';
 
-const WordChallenge = ({ words, currentWordIndex, onWordComplete, timeLeft }) => {
+const WordChallenge = ({ words, currentWordIndex, onWordComplete, onTypingMistake, timeLeft }) => {
   const [currentInput, setCurrentInput] = useState('');
   const [isCorrect, setIsCorrect] = useState(null);
+  const [mistakeCount, setMistakeCount] = useState(0);
   const inputRef = useRef(null);
 
   const currentWord = words[currentWordIndex] || '';
@@ -17,6 +18,7 @@ const WordChallenge = ({ words, currentWordIndex, onWordComplete, timeLeft }) =>
   useEffect(() => {
     setCurrentInput('');
     setIsCorrect(null);
+    setMistakeCount(0);
   }, [currentWordIndex]);
 
   const handleInputChange = (e) => {
@@ -26,14 +28,20 @@ const WordChallenge = ({ words, currentWordIndex, onWordComplete, timeLeft }) =>
     if (value === currentWord) {
       setIsCorrect(true);
       setTimeout(() => {
-        onWordComplete(value);
+        onWordComplete(value, mistakeCount);
         setCurrentInput('');
         setIsCorrect(null);
+        setMistakeCount(0);
       }, 200);
     } else if (currentWord.startsWith(value)) {
       setIsCorrect(null);
     } else {
       setIsCorrect(false);
+      // Check if this is a new mistake (not just continuing to type wrong)
+      if (value.length > 0 && !currentWord.startsWith(value.slice(0, -1))) {
+        setMistakeCount(prev => prev + 1);
+        onTypingMistake();
+      }
     }
   };
 
@@ -51,10 +59,15 @@ const WordChallenge = ({ words, currentWordIndex, onWordComplete, timeLeft }) =>
           <div className="progress-fill" style={{ width: `${((currentWordIndex + 1) / words.length) * 100}%` }}>
           </div>
         </div>
-        <div className="time-display">
-          <span className={`time ${timeLeft <= 5 ? 'urgent' : ''}`}>
-            ⏰ {timeLeft}s
-          </span>
+        <div className="challenge-stats">
+          <div className="mistake-counter">
+            ❌ Mistakes: {mistakeCount}
+          </div>
+          <div className="time-display">
+            <span className={`time ${timeLeft <= 5 ? 'urgent' : ''}`}>
+              ⏰ {timeLeft}s
+            </span>
+          </div>
         </div>
       </div>
       
@@ -86,7 +99,7 @@ const WordChallenge = ({ words, currentWordIndex, onWordComplete, timeLeft }) =>
         />
         <div className="input-feedback">
           {isCorrect === true && '✓ Perfect!'}
-          {isCorrect === false && '✗ Try again!'}
+          {isCorrect === false && '✗ Try again! (-1 second)'}
         </div>
       </div>
       

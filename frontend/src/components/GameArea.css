@@ -7,6 +7,48 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.fishing-rod-background {
+  position: absolute;
+  top: 5%;
+  left: 45%;
+  transform: translateX(-50%) rotate(-30deg);
+  z-index: 1;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.rod-handle-bg {
+  width: 120px;
+  height: 12px;
+  background: linear-gradient(45deg, #8B4513, #A0522D);
+  border-radius: 6px;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.rod-body-bg {
+  width: 200px;
+  height: 6px;
+  background: linear-gradient(45deg, #2F4F4F, #696969);
+  border-radius: 3px;
+  position: absolute;
+  top: 3px;
+  left: 115px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.rod-tip-bg {
+  width: 4px;
+  height: 4px;
+  background: #ff6b6b;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 310px;
+  box-shadow: 0 0 8px rgba(255, 107, 107, 0.6);
 }
 
 .water-canvas {
@@ -15,6 +57,8 @@
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.1), transparent);
+  position: relative;
+  z-index: 2;
 }
 
 .fishing-rod {
@@ -109,6 +153,24 @@
   animation: ripple 1.5s infinite;
 }
 
+.level-indicator {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 15;
+}
+
+.level-badge {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
 @keyframes pulse {
   0%, 100% { transform: translate(-50%, -50%) scale(1); }
   50% { transform: translate(-50%, -50%) scale(1.05); }
@@ -139,8 +201,22 @@
     transform: translateX(-50%) rotate(-45deg) scale(0.8);
   }
   
+  .fishing-rod-background {
+    transform: translateX(-50%) rotate(-30deg) scale(0.8);
+  }
+  
   .cast-button {
     padding: 12px 24px;
     font-size: 16px;
+  }
+  
+  .level-indicator {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .level-badge {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 }

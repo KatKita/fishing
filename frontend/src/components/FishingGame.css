@@ -23,6 +23,29 @@
   z-index: 10;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.level-selector-btn {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.level-selector-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
 .fishing-game.dark .game-header {
   background: rgba(15, 15, 35, 0.8);
   backdrop-filter: blur(10px);
@@ -37,6 +60,11 @@
   .game-header {
     flex-direction: column;
     gap: 15px;
+  }
+  
+  .header-left {
+    flex-direction: column;
+    gap: 10px;
   }
   
   .fishing-game {

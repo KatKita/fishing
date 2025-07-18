@@ -1,0 +1,277 @@
+.fish-history-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fish-history-modal {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 20px;
+  padding: 0;
+  width: 90%;
+  max-width: 800px;
+  max-height: 85vh;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.fish-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.fish-history-header h2 {
+  margin: 0;
+  color: #4ecdc4;
+  font-size: 24px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ff6b6b;
+  transform: rotate(90deg);
+}
+
+.fish-history-content {
+  padding: 25px;
+}
+
+.no-fish {
+  text-align: center;
+  padding: 50px;
+  color: #888;
+  font-size: 18px;
+}
+
+.history-summary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-stat {
+  text-align: center;
+}
+
+.summary-stat .stat-number {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #4ecdc4;
+  margin-bottom: 5px;
+}
+
+.summary-stat .stat-label {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.level-group {
+  margin-bottom: 30px;
+}
+
+.level-header {
+  color: #4ecdc4;
+  font-size: 20px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(78, 205, 196, 0.3);
+}
+
+.fish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.caught-fish-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+}
+
+.caught-fish-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  border-color: rgba(78, 205, 196, 0.3);
+}
+
+.fish-visual-small {
+  width: 50px;
+  height: 35px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.fish-body-small {
+  width: 40px;
+  height: 25px;
+  border-radius: 50%;
+  position: relative;
+  background: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.fish-eye-small {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+}
+
+.fish-tail-small {
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 10px solid rgba(255, 255, 255, 0.3);
+}
+
+.fish-info-small {
+  flex: 1;
+}
+
+.fish-name-small {
+  font-weight: bold;
+  color: #4ecdc4;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.fish-details-small {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.fish-size,
+.fish-points {
+  font-size: 12px;
+  color: #888;
+}
+
+.fish-points {
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.fish-time {
+  font-size: 11px;
+  color: #666;
+}
+
+.fish-history-footer {
+  padding: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.continue-button {
+  background: linear-gradient(45deg, #4ecdc4, #44a08d);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+}
+
+.continue-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(78, 205, 196, 0.5);
+}
+
+@media (max-width: 768px) {
+  .fish-history-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+  
+  .fish-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .history-summary {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .fish-history-header,
+  .fish-history-content,
+  .fish-history-footer {
+    padding: 20px;
+  }
+  
+  .caught-fish-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}

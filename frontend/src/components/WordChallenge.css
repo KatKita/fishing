@@ -23,6 +23,18 @@
   margin-bottom: 20px;
 }
 
+.challenge-stats {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mistake-counter {
+  color: #ff6b6b;
+  font-weight: bold;
+  font-size: 16px;
+}
+
 .progress-bar {
   flex: 1;
   height: 8px;
@@ -193,7 +205,11 @@
   
   .challenge-header {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+  }
+  
+  .challenge-stats {
+    gap: 15px;
   }
   
   .progress-bar {

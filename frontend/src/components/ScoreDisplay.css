@@ -28,6 +28,40 @@
   border-color: rgba(255, 107, 107, 0.4);
 }
 
+.clickable-fish-counter {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.clickable-fish-counter::before {
+  content: '👆 Click to see history';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.clickable-fish-counter:hover::before {
+  opacity: 1;
+  top: -35px;
+}
+
+.clickable-fish-counter:hover {
+  background: rgba(78, 205, 196, 0.2);
+  border-color: rgba(78, 205, 196, 0.4);
+  transform: translateY(-3px);
+}
+
 .score-icon {
   font-size: 20px;
   animation: float 3s ease-in-out infinite;
@@ -109,5 +143,10 @@
   
   .score-label {
     font-size: 10px;
+  }
+  
+  .clickable-fish-counter::before {
+    font-size: 10px;
+    padding: 4px 8px;
   }
 }
